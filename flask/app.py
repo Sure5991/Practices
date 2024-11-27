@@ -1,6 +1,6 @@
 # Flask App Routing
 
-from flask import Flask, render_template , request, redirect,url_for
+from flask import Flask, render_template , request, redirect,url_for,jsonify
 
 # create simple flash application
 app = Flask(__name__)
@@ -42,6 +42,21 @@ def form():
             return render_template('form.html',result = result)
         elif submit == "diff_page":
             return redirect(url_for('result',res = result))
-        
+
+# API usage
+@app.route('/api',methods = ['POST'])
+def calculate():
+    data = request.get_json()
+    first = float(dict(data)['first'])
+    second = float(dict(data)['second'])
+    operation = dict(data)['operation']
+    if operation == "add":
+        result = first + second
+    elif operation == "subtract":
+        result = first - second
+    elif operation == "multiply":
+        result = first * second
+    return jsonify(result)
+
 if __name__ =="__main__":
     app.run(debug= True)
