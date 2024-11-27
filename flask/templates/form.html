@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        label {
+            width: 150px;
+            font-size: 1.2em;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 1em;
+        }
+        button {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #f0f0f0;
+            border: 2px solid #000;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ddd;
+        } 
+        .result {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 4px;
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .result span {
+            color: #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <form action= "{{url_for('form')}}" method="post">
+        <div class="form-group">
+            <label for="first">First number</label>
+            <input type="text" id="first" name="first" required>
+        </div>
+        <div class="form-group">
+            <label for="second">Second number</label>
+            <input type="text" id="second" name="second" required>
+        </div>
+        <div>
+            <label for="operation">Operation:</label>
+            <input type="radio" id="add" name="operation" value="add" required>
+            <label for="add">Add</label>
+            <input type="radio" id="subtract" name="operation" value="sub">
+            <label for="subtract">Subtract</label>
+            <input type="radio" id="multiply" name="operation" value="mul">
+            <label for="multiply">Multiply</label>
+        </div>
+        <button type="submit" name="status" value="same_page">Calculate</button>
+        <button type="submit" name="status" value="diff_page">Calculate (different Page) </button>
+    </form>
+    <p><a href="{{ url_for('instruction') }}">Instruction</a></p>
+    <div class="result">
+        Result: <span>{{ result }}</span>
+    </div>
+</body>
+</html>

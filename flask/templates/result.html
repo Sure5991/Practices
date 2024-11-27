@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculation Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .result {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 4px;
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+        }
+
+        .result span {
+            color: #0066cc;
+        }
+
+        .back-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            border-radius: 4px;
+            text-decoration: none;
+            width: 200px;
+        }
+
+        .back-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculation Result</h1>
+    <div class="result">
+        Result: <span>{{result}}</span>
+    </div>
+    <a href="{{ url_for('form') }}" class="back-btn">Go Back to Calculator</a>
+</body>
+</html>
